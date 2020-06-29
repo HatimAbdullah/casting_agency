@@ -40,7 +40,7 @@ To start and run the local development server,
   3- Executive-producer
     this user can do all of the above and delete movies and actors.
     
-    # Endpoints
+ # Endpoints
     
     in this web app there's endpoints to view actors and movies in list and in details, 
     there's endpoints to to add movies and actors and also to patch and delete them, there is also an endpoint to cast actor to movies and fire them 
