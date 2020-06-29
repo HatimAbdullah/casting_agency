@@ -1,0 +1,42 @@
+{% extends 'layouts/main.html' %}
+{% block title %}New Actor{% endblock %}
+{% block content %}
+  <div class="form-wrapper">
+    <form method="post" class="form" action="/actors">
+      <h3 class="form-heading">List a new actor</h3>
+      <div class="form-group">
+        <label for="name">Name</label>
+        {{ form.name(class_ = 'form-control', autofocus = true) }}
+      </div>
+      <div class="form-group">
+          <label for="gender">Gender</label>
+          {{ form.gender(class_ = 'form-control', autofocus = true) }}
+        </div>
+        <div class="form-group">
+          <label for="age">Age</label>
+          {{ form.age(class_ = 'form-control', autofocus = true) }}
+        </div>
+        <div class="form-group">
+          <label for="place_of_birth">Place of birth</label>
+          {{ form.place_of_birth(class_ = 'form-control', autofocus = true) }}
+        </div>
+        <div class="form-group">
+          <label for="contact">Contact channel</label>
+          {{ form.contact(class_ = 'form-control', autofocus = true) }}
+        </div>
+        <div class="form-group">
+          <label for="image_link">Image Link</label>
+          {{ form.image_link(class_ = 'form-control', autofocus = true) }}
+        </div>
+         <div class="form-group">
+          <label for="has_bio">do you want an active bio section for your profile?</label>
+          {{ form.has_bio(class_ = 'form-control', autofocus = true) }}
+        </div>
+        <div class="form-group">
+          <label for="bio">Actor bio</label>
+          {{ form.bio(class_ = 'form-control', autofocus = true) }}
+        </div>
+      <input type="submit" value="Create Actor" class="btn btn-primary btn-lg btn-block">
+    </form>
+  </div>
+{% endblock %}

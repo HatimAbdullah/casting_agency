@@ -1,0 +1,50 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Film Page{% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col-sm-6">
+		<h1 class="monospace">
+			{{ movie.name }}
+		</h1>
+		<p>
+			<h3><i class="fas fa-globe-americas"></i> {{ movie.release_date }}</h3>
+		</p>
+		<p class="subtitle">
+			ID: {{ movie.id }}
+		</p>
+		<div class="seeking">
+			<p class="lead">Film manfisto</p>
+			<div class="description">
+				<i class="fas fa-quote-left"></i> {{ movie.film_summary }} <i class="fas fa-quote-right"></i>
+			</div>
+		</div>
+	</div>
+	<div class="col-sm-6">
+		<img src="{{ movie.image_link }}" alt="Film Image" />
+	</div>
+</div>
+<section>
+	<h2 class="monospace">{{ movie.cast_count }} {% if movie.cast_count == 1 %}Cast member{% else %}Cast members{% endif %}</h2>
+	<div class="row">
+		{%for actor in movie.cast %}
+		<div class="col-sm-4">
+			<div class="tile tile-show">
+				<img src="{{ actor.image_link }}" alt="Show Actor Image" />
+				<h5><a href="/actors/{{ actor.id }}">{{ actor.name }}</a></h5>
+				<h5>{{ actor.bio }}</h5>
+				<h6>{{ actor.gender }}</h6>
+				<br>
+				<h7> <a href="/fire-actor-from-movie/{{ movie.id }}/{{ actor.id }}" style="color: red">Fire actor</a> </h7>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</section>
+<section>
+<div class="row">
+		<button><a href="/movies/{{ movie.id }}/patch">Edit project</a></button> <button><a href="/movies/{{ movie.id }}/delete">Delete project</a></button>
+	</div>
+</section>
+
+{% endblock %}
+

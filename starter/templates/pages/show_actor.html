@@ -1,0 +1,62 @@
+{% extends 'layouts/main.html' %}
+{% block title %}{{ actor.name }} | Actor{% endblock %}
+{% block content %}
+<div class="row">
+	<div class="col-sm-6">
+		<h1 class="monospace">
+			{{ actor.name }}
+		</h1>
+		<p class="subtitle">
+			ID: {{ actor.id }}
+		</p>
+		<div class="genres">
+			
+			<span class="genre">{{ actor.age }}</span> <span class="genre">{{ actor.gender }}</span>
+			
+		</div>
+		<p>
+			<i class="fas fa-globe-americas"></i> {{ actor.place_of_birth }}
+		</p>
+		<p>
+			<i class="fas fa-phone-alt"></i> {% if actor.contact %}{{ actor.contact }}{% else %}No Contact{% endif %}
+        </p>
+       
+		{% if actor.has_bio %}
+		<div class="seeking">
+			<p class="lead">Message from the actor</p>
+			<div class="description">
+				<i class="fas fa-quote-left"></i> {{ actor.bio }} <i class="fas fa-quote-right"></i>
+			</div>
+		</div>
+		{% else %}	
+		<p class="not-seeking">
+			<i class="fas fa-moon"></i> The actor has no available bio
+		</p>
+		{% endif %}
+	</div>
+	<div class="col-sm-6">
+		<img src="{{ actor.image_link }}" alt="Venue Image" />
+	</div>
+</div>
+<section>
+	<h2 class="monospace">{{ actor.featured_movies_count }} {% if actor.featured_movies_count == 1 %}Film{% else %}Films{% endif %}</h2>
+	<div class="row">
+		{%for film in actor.featured_movies %}
+		<div class="col-sm-4">
+			<div class="tile tile-show">
+				<img src="{{ film.movie_image_link }}" alt="Show Film Poster" />
+				<h5><a href="/movies/{{ film.id }}">{{ film.name }}</a></h5>
+				<h5>{{ film.film_summary }}</h5>
+				<h6>{{ film.release_date }}</h6>
+			</div>
+		</div>
+		{% endfor %}
+	</div>
+</section>
+<section>
+<div class="row">
+		<button><a href="/actors/{{actor.id}}/patch">Edit Actor</a></button> </button> <button><a href="/actors/{{ actor.id }}/delete">Delete Actor</a></button>
+	</div>
+</section>
+{% endblock %}
+

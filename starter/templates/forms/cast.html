@@ -1,0 +1,26 @@
+{% extends 'layouts/main.html' %}
+{% block title %}Casting Listing{% endblock %}
+{% block content %}
+  <div class="form-wrapper">
+    <form method="post" class="form" action="/cast-actor-to-movie">
+      <h3 class="form-heading">Cast an actor to a film</h3>
+      <div class="form-group">
+        <label for="actor">Actor</label>
+        <select class="form-control" name="actor_id">
+          {%for actor in actors %}
+          <option value="{{actor.id}}"> {{actor.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="movie">Film</label>
+         <select class="form-control" name="movie_id">
+          {%for movie in movies %}
+          <option value="{{movie.id}}"> {{movie.name}}</option>
+          {% endfor %}
+        </select>
+      </div>
+      <input type="submit" value="Cast actor" class="btn btn-primary btn-lg btn-block">
+    </form>
+  </div>
+{% endblock %}
